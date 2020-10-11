@@ -13,8 +13,6 @@ window.addEventListener('load',function(){
     }
     
     function marksqr(sqr){
-
-        document.getElementById('status').innerHTML="Congratulations! X is the Winner!"
         var arrayofsquares=Array.from(showboard);
         var indexes=arrayofsquares.indexOf(sqr.target);
         if(xOro==false && arrayofsquares[indexes].innerHTML==""&&gamewon==false){
@@ -91,5 +89,27 @@ window.addEventListener('load',function(){
             } 
         }
         return "none";
+    }
+
+    
+    document.querySelector('.btn').addEventListener("click",fresh);
+    function fresh(){
+        gamewon=false;
+        var arrayofsquares=Array.from(showboard);
+        for(let i=0;i<showboard.length;i++){
+            console.log(i);
+            arrayofsquares[i].innerHTML=""
+            if (arrayofsquares[i].classList.contains('O')){
+                arrayofsquares[i].classList.remove('O');
+            }
+            else{
+                arrayofsquares[i].classList.remove('X');
+            }
+        }
+        document.getElementById('status').innerHTML="Move your mouse over a square and click to play an X or an O.";
+        document.getElementById('status').classList.remove("you-won");
+        document.getElementById('status').classList.remove("before");
+        document.getElementById('status').classList.remove("after");
+
     }
 });
