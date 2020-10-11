@@ -17,7 +17,8 @@ window.addEventListener('load',function(){
         var arrayofsquares=Array.from(showboard);
         var indexes=arrayofsquares.indexOf(sqr.target);
         if(xOro==false && arrayofsquares[indexes].innerHTML==""){
-            arrayofsquares[indexes].innerHTML="O"
+            arrayofsquares[indexes].innerHTML="O";
+            arrayofsquares[indexes].classList.toggle("hover");
                 //alert(xOro);
             xOro=true
                 /*ocount++;
@@ -26,14 +27,38 @@ window.addEventListener('load',function(){
                 }*/
         }
         else if(xOro==true && arrayofsquares[indexes].innerHTML=="" ){
-                arrayofsquares[indexes].innerHTML="X"
+                arrayofsquares[indexes].innerHTML="X";
+                arrayofsquares[indexes].classList.toggle("hover");
                 //alert(xOro);
                 xOro=false;
                 xcount++;
         }
 
     }
-        
+
+    for(let i=0;i<showboard.length;i++){
+        showboard[i].addEventListener('mouseover', hovering);
+    }
+
+    function hovering(sqr){
+        var arrayofsquares=Array.from(showboard);
+        var indexes=arrayofsquares.indexOf(sqr.target);
+        if (arrayofsquares[indexes].innerHTML==""){
+            arrayofsquares[indexes].classList.toggle("hover",true);
+        }
+    }
+    
+    for(let i=0;i<showboard.length;i++){
+        showboard[i].addEventListener('mouseout', msout);
+    }
+
+    function msout(sqr){
+        var arrayofsquares=Array.from(showboard);
+        var indexes=arrayofsquares.indexOf(sqr.target);
+        if (arrayofsquares[indexes].innerHTML==""){
+            arrayofsquares[indexes].classList.toggle("hover");
+        }
+    }
 
     
         
